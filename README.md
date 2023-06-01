@@ -1,2 +1,2 @@
 # stacks_blast
-## Cleaning data contamination
+## Step 1: Data verification
