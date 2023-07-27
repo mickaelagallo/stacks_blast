@@ -48,3 +48,12 @@ sh UStacks.sh Stefania/ result/
 ```
 
 
+UPDATE!!
+
+```ruby
+import pandas as pd #Para importar el dataframe
+ruta_archivo = "catalog.tags.tsv.gz"
+#df = pd.read_csv(ruta_archivo, sep='\t', compression='gzip') #Visualización normal del dataframe
+f = pd.read_csv(ruta_archivo, sep='\t', compression='gzip', header=None, names = ['sample_id','loci_id','consensus','st_comp','seq_id','seq','fl1','fl2','fl3'])
+df[1:-1]
+```
