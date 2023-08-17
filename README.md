@@ -57,3 +57,43 @@ ruta_archivo = "catalog.tags.tsv.gz"
 f = pd.read_csv(ruta_archivo, sep='\t', compression='gzip', header=None, names = ['sample_id','loci_id','consensus','st_comp','seq_id','seq','fl1','fl2','fl3'])
 df[1:-1]
 ```
+
+
+## Converting tables to FASTA format ---> using the Pandas library
+
+1. Import the library
+   
+```ruby
+import pandas as pd
+```
+2. Indicate the path of the file
+
+```ruby
+ruta_archivo = "Ab_372_ACTGG-ATCACG.tags.tsv.gz"
+```
+3. Loading the CSV file
+   
+```ruby
+df= pd.read_csv(ruta_archivo, sep="\t", header=None,
+            names=["sample_id", "loci_id", "consensus", "st_comp", "seq_id", "seq", "fl1", "fl2", "fl3"])
+df= df[1:-1] #to display the table without the first and last row
+```
+
+4. To add text/symbols to a column
+
+```ruby
+df['loci_id'] = df['loci_id'].apply(lambda x: f">{x}") #FASTA format symbol: >
+fasta=df[["loci_id","seq"]]
+```
+5. To convert to FASTA format
+
+```ruby
+fasta.to_csv("catalogue.fasta", sep="\n", header=False, index=False)
+```
+6. Para visualizar solo la columna seq_id
+
+```ruby
+sin_seq_id=df["seq_id"]
+fasta.iloc[0,1]
+```
+
